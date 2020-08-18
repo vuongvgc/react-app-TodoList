@@ -1,38 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .App {
+  width: 50%;
+  margin: 0 auto;
   text-align: center;
+  background-color: #eee;
+  height: 100vh;
+}
+/*
+header compoment
+*/
+
+header h1 {
+  font-size: 90px;
+  text-transform: lowercase;
+  font-weight: 300;
+  color: pink;
+}
+/*
+Add todo compoment
+*/
+
+.Input-text, {
+  width: 400px;
+  margin: 0 auto;
+}
+.Input-text input[type=text] {
+  width: 80%;
+  font-size: 24px;
+  height: auto;
+  padding: 10px 20px;
+  margin: 25px auto;
+  text-align: center;
+  display: block;
+  box-shadow: 11px 11px 5px 0px rgba(173,187,194,0.87);
+  border: none
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/*
+Todo compoment
+*/
+.Todo-List {
+  width: 400px;
+  height: 55vh;
+  overflow: auto;
+  margin: 0 auto;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.ListItem {
+  width: 80%;
+  list-style-type: none;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 20px auto;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ff8080;
+}
+.ListItem p {
+  display: block;
+  width: 90%;
+  align-self: flex-start;
+  display: flex;
+  align-content: flex-start;
+  text-transform: capitalize;
+}
+.ListItem button {
+  display: block;
+  width: 10%;
+  align-self: flex-end;
 }
 
-.App-link {
-  color: #61dafb;
-}
+/*
+Footer Header
+*/
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+footer {
+  padding: 10px;
+  border-top: 1px solid #ff8080;
+  display: flex;
+  justify-content: space-between;
 }
