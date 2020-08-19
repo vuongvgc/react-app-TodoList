@@ -5,12 +5,14 @@ import AddTodo from './AddTodo/AddTodo';
 import TodoList from './TodoList/TodoList';
 import Headers from './Layout/Header';
 import Footers from './Layout/Footer';
+import Status from './Status/Status';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
+      textTodo: '',
+      isDone: [],
       todo: []
     };
     this.handleChange = this.handleChange.bind(this);
@@ -22,25 +24,24 @@ class App extends React.Component {
     if (event.charCode === 13) {
       let todoList = this.state.todo.slice();
       const length =  this.state.todo.length;
-      todoList[length] = this.state.value;
+      todoList[length] = this.state.textTodo;
       this.setState({
-        value: '',
+        textTodo: '',
         todo: todoList
       });
     }
   }
   handleChange(event) {
-    this.setState({value: event.target.value
-    });
+    this.setState({textTodo: event.target.value});
     event.preventDefault()
   }
 
   handleTodo(event) {
     let todoList = this.state.todo.slice();
       const length =  this.state.todo.length;
-      todoList[length] = this.state.value;
+      todoList[length] = this.state.textTodo;
       this.setState({
-        value: '',
+        textTodo: '',
         todo: todoList
       });
     event.preventDefault()
@@ -50,16 +51,20 @@ class App extends React.Component {
     let todoList = this.state.todo.slice();
     todoList.splice(todoList.indexOf(value), 1);
     this.setState({
-      value: '',
+      textTodo: '',
       todo: todoList
     });
   }
   render() {
+    const textTodo = this.state.textTodo;
+    const isDone = this.state.isDone;
+    const todoList = this.state.todo;
     return (
       <div className="App">
         <Headers />
-        <AddTodo valueTodo={this.state.value} changeValue={this.handleChange} keyPress={this.keyFunction} click={this.handleTodo}/>
-        <TodoList todo={this.state.todo} deleteTodo={this.deleteTodo}/>
+        <Status todo={todoList} />
+        <AddTodo valueTodo={textTodo}  changeValue={this.handleChange} keyPress={this.keyFunction} click={this.handleTodo}/>
+        <TodoList isDone={isDone} todo={todoList} deleteTodo={this.deleteTodo}/>
         <Footers />
       </div>
     );
