@@ -12,19 +12,21 @@ function ListItem(props) {
   }
   
 function TodoList(props) {
-    const todo = props.todo;
-    return (
-        <div className="Todo-List">
-            <ol>
-                {todo.map((todo) =>
-                <ListItem 
-                key={todo.toString()}
-                value={todo}
+    const todoData = props.todo;
+    const listItems = todoData.map((current) =>
+    // Correct! Key should be specified inside the array.
+    <ListItem   key={current.toString()}
+                value={current.todoText}
                 click={(a) => props.deleteTodo(a)}
                 isDone={props.isDone} />
-                )}
-            </ol>
-        </div> 
-    );
-  }
+     );
+    return (
+    <div className="Todo-List">
+        <ul>
+            {listItems}
+        </ul>
+    </div>
+    
+  );
+    }
 export default TodoList;

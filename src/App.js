@@ -5,7 +5,7 @@ import AddTodo from './AddTodo/AddTodo';
 import TodoList from './TodoList/TodoList';
 import Headers from './Layout/Header';
 import Footers from './Layout/Footer';
-import Status from './Status/Status';
+import Status from './Status/Status'
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class App extends React.Component {
     this.state = {
       textTodo: '',
       isDone: [],
-      todo: []
+      todo: [{todoText: 'Victor', isActive: true}, {todoText: 'Vuong', isActive: false}],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleTodo = this.handleTodo.bind(this);
@@ -38,8 +38,8 @@ class App extends React.Component {
 
   handleTodo(event) {
     let todoList = this.state.todo.slice();
-      const length =  this.state.todo.length;
-      todoList[length] = this.state.textTodo;
+    const length =  this.state.todo.length;
+      todoList[length] = {isActive: true, todo: this.state.textTodo};
       this.setState({
         textTodo: '',
         todo: todoList
