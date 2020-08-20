@@ -14,24 +14,21 @@ function ListItem(props) {
 class TodoList extends React.Component {
     render(){
         const todoData = this.props.todo;
-        console.log(todoData);
         const listItems = todoData.map((current) =>
         // Correct! Key should be specified inside the array.
-        <ListItem   key={current.id}
-                    value={current.todoText}
-                    id = {current.id}
-                    click={(a) => this.props.deleteTodo(a)}
-                    isDone={this.props.isDone} />
+            <ListItem   key={current.id}
+                        value={current.todoText}
+                        id = {current.id}
+                        click={(a) => this.props.deleteTodo(a)}
+                        isDone={this.props.isDone} />
         );
         return (
-        <div className="Todo-List">
-            <ul>
-                {listItems}
-            </ul>
-        </div>
-        
-    );
-
+            <div className="Todo-List">
+                <ul>
+                    {listItems}
+                </ul>
+            </div>
+             );
     }
-    }
+}  
 export default TodoList;

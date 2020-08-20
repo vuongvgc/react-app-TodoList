@@ -13,7 +13,7 @@ class App extends React.Component {
     this.state = {
       textTodo: '',
       isDone: [],
-      todo: [{id:'id-01', todoText: 'Victor', isActive: true}, {id:'id-02', todoText: 'Vuong', isActive: false}],
+      todo: [],
     };    
     this.handleChange = this.handleChange.bind(this);
     this.keyFunction = this.keyFunction.bind(this);
