@@ -6,28 +6,27 @@ import TodoList from './TodoList/TodoList';
 import Headers from './Layout/Header';
 import Footers from './Layout/Footer';
 import Status from './Status/Status'
-
+import nextId from "react-id-generator";
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       textTodo: '',
       isDone: [],
-      todo: [{todoText: 'Victor', isActive: true}, {todoText: 'Vuong', isActive: false}],
-    };
-    this.handleChange = this.handleChange.bind(this);
+      todo: [{id:'id-01', todoText: 'Victor', isActive: true}, {id:'id-02', todoText: 'Vuong', isActive: false}],
+    };    this.handleChange = this.handleChange.bind(this);
     this.handleTodo = this.handleTodo.bind(this);
     this.keyFunction = this.keyFunction.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
   }
   keyFunction(event) {
     if (event.charCode === 13) {
+      let uniqueId = nextId();
       let todoList = this.state.todo.slice();
-      const length =  this.state.todo.length;
-      todoList[length] = this.state.textTodo;
+      let  todoListNew = [{id: uniqueId, todoText: this.state.textTodo, isActive: true}];
       this.setState({
         textTodo: '',
-        todo: todoList
+        todo: todoList.concat(todoListNew)
       });
     }
   }
@@ -38,11 +37,10 @@ class App extends React.Component {
 
   handleTodo(event) {
     let todoList = this.state.todo.slice();
-    const length =  this.state.todo.length;
-      todoList[length] = {isActive: true, todo: this.state.textTodo};
+    let  todoListNew = [{isActive: true, todo: this.state.textTodo}];
       this.setState({
         textTodo: '',
-        todo: todoList
+        todo: todoList.concat(todoListNew)
       });
     event.preventDefault()
 
