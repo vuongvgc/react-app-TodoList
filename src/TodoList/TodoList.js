@@ -1,16 +1,14 @@
 import React from 'react';
 import '../App.css';
 
-class ListItem extends React.Component {
-    render() {
+function ListItem(props) {
         return(
             <li className="ListItem">
-                <input type="checkbox" checked={this.props.isDone} />
-                <p>{this.props.value}</p>
-                <button onClick={() => this.props.click(this.props.value)} >X</button>
+                <input type="checkbox" checked={props.isDone} />
+                <p>{props.value}</p>
+                <button onClick={() => props.click(props.id)}>X</button>
             </li>
         ) 
-    }
   }
   
 class TodoList extends React.Component {
@@ -21,6 +19,7 @@ class TodoList extends React.Component {
         // Correct! Key should be specified inside the array.
         <ListItem   key={current.id}
                     value={current.todoText}
+                    id = {current.id}
                     click={(a) => this.props.deleteTodo(a)}
                     isDone={this.props.isDone} />
         );

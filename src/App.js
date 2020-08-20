@@ -14,8 +14,8 @@ class App extends React.Component {
       textTodo: '',
       isDone: [],
       todo: [{id:'id-01', todoText: 'Victor', isActive: true}, {id:'id-02', todoText: 'Vuong', isActive: false}],
-    };    this.handleChange = this.handleChange.bind(this);
-    this.handleTodo = this.handleTodo.bind(this);
+    };    
+    this.handleChange = this.handleChange.bind(this);
     this.keyFunction = this.keyFunction.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
   }
@@ -34,20 +34,10 @@ class App extends React.Component {
     this.setState({textTodo: event.target.value});
     event.preventDefault()
   }
-
-  handleTodo(event) {
-    let todoList = this.state.todo.slice();
-    let  todoListNew = [{isActive: true, todo: this.state.textTodo}];
-      this.setState({
-        textTodo: '',
-        todo: todoList.concat(todoListNew)
-      });
-    event.preventDefault()
-
-  }
   deleteTodo(value) {
     let todoList = this.state.todo.slice();
-    todoList.splice(todoList.indexOf(value), 1);
+    let idIndex = todoList.findIndex((todo) => todo.id === value );
+    todoList.splice(idIndex, 1);
     this.setState({
       textTodo: '',
       todo: todoList
