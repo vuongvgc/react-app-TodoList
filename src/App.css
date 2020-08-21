@@ -71,6 +71,9 @@ Todo compoment
   width: 10%;
   align-self: flex-end;
 }
+.Todotext {
+  color: burlywood;
+}
 
 /*
 Footer Header

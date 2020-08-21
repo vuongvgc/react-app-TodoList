@@ -12,7 +12,6 @@ class App extends React.Component {
     super(props);
     this.state = {
       textTodo: '',
-      isDone: [],
       todo: [],
     };    
     this.handleChange = this.handleChange.bind(this);
@@ -23,12 +22,22 @@ class App extends React.Component {
     if (event.charCode === 13) {
       let uniqueId = nextId();
       let todoList = this.state.todo.slice();
-      let  todoListNew = [{id: uniqueId, todoText: this.state.textTodo, isActive: true}];
+      let  todoListNew = [{id: uniqueId, todoText: this.state.textTodo, isActive: false}];
       this.setState({
         textTodo: '',
         todo: todoList.concat(todoListNew)
       });
     }
+  }
+  doneTodo = (id) => {
+    let todoList = this.state.todo.slice();
+    let idIndex = todoList.findIndex((todo) => todo.id === id );
+    todoList[idIndex].isActive = todoList[idIndex].isActive ? false : true;
+    this.setState({
+      textTodo: '',
+      todo: todoList
+    });
+
   }
   handleChange(event) {
     this.setState({textTodo: event.target.value});
@@ -45,14 +54,13 @@ class App extends React.Component {
   }
   render() {
     const textTodo = this.state.textTodo;
-    const isDone = this.state.isDone;
     const todoList = this.state.todo;
     return (
       <div className="App">
         <Headers />
         <Status todo={todoList} />
         <AddTodo valueTodo={textTodo}  changeValue={this.handleChange} keyPress={this.keyFunction} click={this.handleTodo}/>
-        <TodoList isDone={isDone} todo={todoList} deleteTodo={this.deleteTodo}/>
+        <TodoList todo={todoList} deleteTodo={this.deleteTodo} doneTodo={this.doneTodo} />
         <Footers />
       </div>
     );
