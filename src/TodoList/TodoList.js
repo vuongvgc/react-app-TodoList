@@ -14,8 +14,24 @@ function ListItem(props) {
         ) 
   }
 class TodoList extends React.Component {
+    checkStatus = (status) => {
+        let todoData;
+        const data = this.props.todo
+        if(status === 'all') {
+            todoData = data
+        
+        }
+        else if(status === 'active') {
+            todoData =  data.filter((todo) => todo.isActive === false)
+        }
+        else {
+            todoData = data.filter((todo) => todo.isActive === true)
+        }
+        return todoData;
+    }
     render(){
-        const todoData = this.props.todo;
+        const todoData = this.checkStatus(this.props.status);
+        console.log(todoData)
         const listItems = todoData.map((current) =>
         // Correct! Key should be specified inside the array.
             <ListItem   key={current.id}

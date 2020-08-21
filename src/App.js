@@ -5,13 +5,15 @@ import AddTodo from './AddTodo/AddTodo';
 import TodoList from './TodoList/TodoList';
 import Headers from './Layout/Header';
 import Footers from './Layout/Footer';
-import Status from './Status/Status'
+import Status from './Status/Status';
+import Buttons from './Status/Buttons';
 import nextId from "react-id-generator";
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       textTodo: '',
+      status:'all',
       todo: [],
     };    
     this.handleChange = this.handleChange.bind(this);
@@ -52,15 +54,44 @@ class App extends React.Component {
       todo: todoList
     });
   }
+  buttonHandle = (event) => {
+    let status;
+    const value= event.target.value;
+    if(value === 'all') {
+      status = 'all'
+    }
+    else if(value === 'active') {
+      status = 'active'
+    }
+    else {
+      status = 'completed'
+    }
+    return(
+      this.setState({
+        status: status
+      })
+    )
+  }
   render() {
     const textTodo = this.state.textTodo;
     const todoList = this.state.todo;
     return (
       <div className="App">
         <Headers />
-        <Status todo={todoList} />
-        <AddTodo valueTodo={textTodo}  changeValue={this.handleChange} keyPress={this.keyFunction} click={this.handleTodo}/>
-        <TodoList todo={todoList} deleteTodo={this.deleteTodo} doneTodo={this.doneTodo} />
+        <Status 
+          todo={todoList} />
+        <Buttons 
+          buttonHandle ={this.buttonHandle} />
+        <AddTodo 
+          valueTodo={textTodo}  
+          changeValue={this.handleChange} 
+          keyPress={this.keyFunction} 
+          click={this.handleTodo}/>
+        <TodoList 
+          todo={todoList} 
+          deleteTodo={this.deleteTodo} 
+          doneTodo={this.doneTodo} 
+          status={this.state.status} />
         <Footers />
       </div>
     );
