@@ -2,22 +2,23 @@ import React from 'react';
 import '../App.css';
 class Buttons extends React.Component {
     render() {
+        const statusCurrent = this.props.status;
         return(
             <div className="Button__status">
                 <button 
-                    className="Button__status-all" 
+                    className={statusCurrent ==='all' ? 'Button__status-active'  :'Button__status-not-active'} 
                     onClick={this.props.buttonHandle} 
                     value='all'>
                     All
                 </button>
                 <button 
-                    className="Button__status-active" 
+                    className={statusCurrent ==='active' ? 'Button__status-active'  : 'Button__status-not-active'} 
                     onClick={this.props.buttonHandle}
                     value='active'>
                     Active
                 </button>
                 <button 
-                    className="Button__status-completed" 
+                    className={statusCurrent ==='completed' ? 'Button__status-active'  :'Button__status-not-active'} 
                     onClick={this.props.buttonHandle}
                     value='completed'>
                     Completed

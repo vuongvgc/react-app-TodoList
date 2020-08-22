@@ -75,13 +75,15 @@ class App extends React.Component {
   render() {
     const textTodo = this.state.textTodo;
     const todoList = this.state.todo;
+    const status = this.state.status;
     return (
       <div className="App">
         <Headers />
         <Status 
           todo={todoList} />
         <Buttons 
-          buttonHandle ={this.buttonHandle} />
+          buttonHandle ={this.buttonHandle}
+          status={status} />
         <AddTodo 
           valueTodo={textTodo}  
           changeValue={this.handleChange} 
@@ -91,7 +93,7 @@ class App extends React.Component {
           todo={todoList} 
           deleteTodo={this.deleteTodo} 
           doneTodo={this.doneTodo} 
-          status={this.state.status} />
+          status={status} />
         <Footers />
       </div>
     );
