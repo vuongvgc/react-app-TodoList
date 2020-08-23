@@ -1,15 +1,26 @@
 import React from 'react';
 import '../App.css';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faCircle, faWindowClose} from '@fortawesome/free-solid-svg-icons';
+
+
 
 function ListItem(props) {
-    const todo = props.isActive ? <p className="Todotext"><del>{props.value}</del></p> : <p>{props.value}</p>
+    const todo = props.isActive 
+        ? <p className="Todotext"><del>{props.value}</del></p> 
+        : <p>{props.value}</p>;
+    const isActive = props.isActive;
         return(
             <li className="ListItem">
-                <input  type="checkbox" 
-                        checked={props.isActive} 
-                        onClick={() => props.clickDone(props.id)} />
-                <p>{todo}</p>
-                <button onClick={() => props.clickDelete(props.id)}>X</button>
+                <FontAwesomeIcon 
+                    className ='font-awesome icon__footer' 
+                    icon={isActive ? faCheckCircle : faCircle}
+                    onClick={() => props.clickDone(props.id)}  />
+                <p>{todo}</p>                
+                <FontAwesomeIcon 
+                    className ='font-awesome icon__footer' 
+                    icon={faWindowClose}
+                    onClick={() => props.clickDelete(props.id)}  />
             </li>
         ) 
   }

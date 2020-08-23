@@ -4,9 +4,8 @@ import '../App.css';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faLinkedin, faGithub, faFacebook, faReact} from '@fortawesome/fontawesome-free-brands';
-import { library, dom } from '@fortawesome/fontawesome-svg-core'
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faUserAstronaut} from '@fortawesome/free-solid-svg-icons';
-
 // We are only using the user-astronaut icon
 library.add(faUserAstronaut)
 

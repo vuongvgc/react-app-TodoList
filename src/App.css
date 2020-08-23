@@ -55,15 +55,17 @@ Todo compoment
   width: 80%;
   list-style-type: none;
   display: flex;
+  align-items: center;
   margin: 20px auto;
   padding-bottom: 10px;
   border-bottom: 1px solid #ff8080;
 }
 .ListItem p {
   display: block;
+  font-size: 20px;
   width: 90%;
-  align-self: flex-start;
   display: flex;
+  align-self: baseline;
   align-content: flex-start;
   text-transform: capitalize;
 }
@@ -100,7 +102,11 @@ footer {
 .icon__footer {
   color: #ff8080;
   font-size: 20px;
-  margin: 0 5px
+  margin: 0 5px;
+  transition: all .2s;
+}
+.icon__footer:hover {
+  transform: scale(1.1);
 }
 .Author__name {
   font-size: 20px;
