@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faCircle, faWindowClose} from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faCircle,  faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -19,7 +19,7 @@ function ListItem(props) {
                 <p>{todo}</p>                
                 <FontAwesomeIcon 
                     className ='font-awesome icon__footer' 
-                    icon={faWindowClose}
+                    icon={faTrashAlt}
                     onClick={() => props.clickDelete(props.id)}  />
             </li>
         ) 

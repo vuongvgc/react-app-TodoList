@@ -16,11 +16,8 @@ class App extends React.Component {
       status:'all',
       todo: [],
     };    
-    this.handleChange = this.handleChange.bind(this);
-    this.keyFunction = this.keyFunction.bind(this);
-    this.deleteTodo = this.deleteTodo.bind(this);
   }
-  keyFunction(event) {
+  keyFunction = (event) => {
     if (event.charCode === 13) {
       let uniqueId = nextId();
       let todoList = this.state.todo.slice();
@@ -41,11 +38,11 @@ class App extends React.Component {
     });
 
   }
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({textTodo: event.target.value});
     event.preventDefault()
   }
-  deleteTodo(value) {
+  deleteTodo = (value) => {
     let todoList = this.state.todo.slice();
     let idIndex = todoList.findIndex((todo) => todo.id === value );
     todoList.splice(idIndex, 1);
