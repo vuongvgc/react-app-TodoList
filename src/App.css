@@ -144,3 +144,10 @@ Buttons
 .Button__status-active {
   background-color: #ff8080;
 }
+
+@media only screen and (max-width: 900px) {
+  .App {
+    width: 100%;
+  }
+ 
+}
